@@ -3,77 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <title>Feedback</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
 <header>
-    <div id="title_index">
-        <h2>
-            Tony's Pizza Factory
-        </h2>
-    </div>
-    <nav id="links_index">
-        <a href="pizza.html">Pizza</a>
-        <a href="salad.html">Salad</a>
-        <a href="soft_drinks.html">Soft Drinks</a>
-        <a href="feedback.html">Feedback</a>
+    <b class="title">Tony's Pizza Factory</b>
+
+    <nav class="links">
+        <ul class="navigation">
+            <li><a href="pizza.html" class="title_links">Pizza</a></li>
+            <li><a href="salad.html" class="title_links">Salad</a></li>
+            <li><a href="soft_drinks.html" class="title_links">Soft Drinks</a></li>
+            <li><a href="feedback.html" class="title_links">Feedback</a></li>
+            <li><a href="index.html" class="title_links">Home</a></li>
+        </ul>
     </nav>
 </header>
 
 <section>
     <h1>Tell us what you think</h1>
-    <form>
-        <p>
-            How do you like our Pizza?
-            <input value="awesome" type="radio" name="pizzaRating"> Awesome
-            <input value="good" type="radio" name="pizzaRating"> Good
-            <input value="okay" type="radio" name="pizzaRating"> Okay
-            <input value="bad" type="radio" name="pizzaRating"> Bad
-        </p>
-        <p>
-            What do you think about our prices?
-            <input value="fair" type="radio" name="pizzaPrice"> Fair
-            <input value="okay" type="radio" name="pizzaPrice"> Okay
-            <input value="expensive" type="radio" name="pizzaPrice"> Expensive
-        </p>
-        <ul>
-            <li>Your name? <input type="text"></li>
-            <li>Your e-mail address? <input type="text"></li>
-            <li>What can we do better? <input type="text"></li>
-        </ul>
-        <input type="submit">
-    </form>
+    <div class="feedback">
+        <form>
+            <table>
+                <tr>
+                    <td class="description">How do you like our Pizza?</td>
+                    <td>
+                        <input value="awesome" type="radio" name="pizzaRating"> Awesome
+                        <input value="good" type="radio" name="pizzaRating"> Good
+                        <input value="okay" type="radio" name="pizzaRating"> Okay
+                        <input value="bad" type="radio" name="pizzaRating"> Bad
+                    </td>
+                </tr>
+                <tr>
+                    <td class="description">What do you think about our prices?</td>
+                    <td>
+                        <input value="fair" type="radio" name="pizzaPrice"> Fair
+                        <input value="okay" type="radio" name="pizzaPrice"> Okay
+                        <input value="expensive" type="radio" name="pizzaPrice"> Expensive
+                    </td>
+                </tr>
+                <tr>
+                    <td class="description">Your name?</td>
+                    <td><input type="text" class="text"></td>
+                </tr>
+                <tr>
+                    <td class="description">Your e-mail address?</td>
+                    <td><input type="text" class="text"></td>
+                </tr>
+                <tr>
+                    <td class="description">What can we do better?</td>
+                    <td class="longText"><input type="text" class="text"></td>
+                </tr>
+                <tr>
+                    <td class="description"></td>
+                    <td id="submitButton"><input type="submit"></td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
 </section>
 
 <footer>
     <table>
         <tr>
-            <th colspan="2">Hours:</th>
-        </tr>
-        <tr>
-            <td>Mon-Thu: </td>
-            <td>11 am - 23 pm</td>
-        </tr>
-        <tr>
-            <td>Fri-Sat: </td>
-            <td>11 am - 24 pm</td>
-        </tr>
-        <tr>
-            <td colspan="2">Sunday closed</td>
+            <td class="left_column">
+                <table>
+                    <tr>
+                        <th colspan="2" class="hours_title">Hours:</th>
+                    </tr>
+                    <tr>
+                        <td>Mon-Thu: </td>
+                        <td>11 am - 23 pm</td>
+                    </tr>
+                    <tr>
+                        <td>Fri-Sat: </td>
+                        <td>11 am - 24 pm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Sunday closed</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="middle_column">
+                <blockquote>
+                    <cite>
+                        "The Pizzeria is one place I have been wanting to visit for a long time.
+                        The reason being their Napoli pizza which absolutly blew me away" - Jimmy
+                    </cite>
+                </blockquote>
+            </td>
+            <td class="right_column">
+                <address>
+                    <b>Address:</b><br>
+                    Tony's Pizza Factory<br>
+                    2122 N Clork St<br>
+                    Chicago, IL 60614, USA
+                </address>
+            </td>
         </tr>
     </table>
-    <div class="middleDiv"></div>
-    <blockquote>
-        <cite>
-            "The Pizzeria is one place I have been wanting to visit for a long time.
-            The reason being their Napoli pizza which absolutly blew me away" - Jimmy
-        </cite>
-    </blockquote>
-    <address>
-        Address:<br>
-        Tony's Pizza Factory<br>
-        2122 N Clork St<br>
-        Chicago, IL 60614, USA
-    </address>
 </footer>
 </body>
 </html>

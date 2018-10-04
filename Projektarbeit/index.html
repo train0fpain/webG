@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Tony's Pizza Factory</title>
-
+    <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <div id="title_index">
-            <h2>
-                Tony's Pizza Factory
-            </h2>
-        </div>
-        <nav id="links_index">
-            <a href="pizza.html">Pizza</a>
-            <a href="salad.html">Salad</a>
-            <a href="soft_drinks.html">Soft Drinks</a>
-            <a href="feedback.html">Feedback</a>
+        <b class="title">Tony's Pizza Factory</b>
+
+        <nav class="links">
+            <ul class="navigation">
+                <li><a href="pizza.html" class="title_links">Pizza</a></li>
+                <li><a href="salad.html" class="title_links">Salad</a></li>
+                <li><a href="soft_drinks.html" class="title_links">Soft Drinks</a></li>
+                <li><a href="feedback.html" class="title_links">Feedback</a></li>
+                <li><a href="index.html" class="title_links">Home</a></li>
+            </ul>
         </nav>
     </header>
 
     <section>
-        <h1>Tony's Pizza Factory</h1>
-        <div id="mainPicture_index">
-            <img src="img/pizza.jpg" height="200" width="200" alt="pizza image">
-        </div>
-        <div id="imgLinks_index">
+        <h1>Welcom to Tony's Pizza Factory</h1>
+            <img class="factoryImg" src="img/pizza.jpg" height="200" width="200" alt="pizza image">
+
+        <div class="imgLinks_index">
             <a href="pizza.html"><img src="img/pizza.jpg" height="75" width="75" alt="pizza image">Pizza</a>
             <a href="salad.html"><img src="img/pizza.jpg" height="75" width="75" alt="pizza image">Salad</a>
             <a href="soft_drinks.html"><img src="img/pizza.jpg" height="75" width="75" alt="pizza image">Soft Drinks</a>
@@ -36,33 +35,42 @@
     <footer>
         <table>
             <tr>
-                <th colspan="2">Hours:</th>
-            </tr>
-            <tr>
-                <td>Mon-Thu: </td>
-                <td>11 am - 23 pm</td>
-            </tr>
-            <tr>
-                <td>Fri-Sat: </td>
-                <td>11 am - 24 pm</td>
-            </tr>
-            <tr>
-                <td colspan="2">Sunday closed</td>
+                <td class="left_column">
+                    <table>
+                        <tr>
+                            <th colspan="2" class="hours_title">Hours:</th>
+                        </tr>
+                        <tr>
+                            <td>Mon-Thu: </td>
+                            <td>11 am - 23 pm</td>
+                        </tr>
+                        <tr>
+                            <td>Fri-Sat: </td>
+                            <td>11 am - 24 pm</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Sunday closed</td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="middle_column">
+                    <blockquote>
+                        <cite>
+                            "The Pizzeria is one place I have been wanting to visit for a long time.
+                            The reason being their Napoli pizza which absolutly blew me away" - Jimmy
+                        </cite>
+                    </blockquote>
+                </td>
+                <td class="right_column">
+                    <address>
+                        <b>Address:</b><br>
+                        Tony's Pizza Factory<br>
+                        2122 N Clork St<br>
+                        Chicago, IL 60614, USA
+                    </address>
+                </td>
             </tr>
         </table>
-        <div class="middleDiv"></div>
-        <blockquote>
-            <cite>
-                "The Pizzeria is one place I have been wanting to visit for a long time.
-                The reason being their Napoli pizza which absolutly blew me away" - Jimmy
-            </cite>
-        </blockquote>
-        <address>
-            Address:<br>
-            Tony's Pizza Factory<br>
-            2122 N Clork St<br>
-            Chicago, IL 60614, USA
-        </address>
     </footer>
 </body>
 </html>
