@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <title>Tony's Pizza Factory</title>
     <link href="styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <header>
         <b class="title">Tony's Pizza Factory</b>
 
-        <nav class="links">
-            <div><a href="#" class="title_links">Home</a></div>
-            <div><a href="#pizzaSection" class="title_links">Pizza</a></div>
-            <div><a href="#saladSection" class="title_links">Salad</a></div>
-            <div><a href="#softDrinkSection" class="title_links">Soft Drinks</a></div>
-            <div><a href="#feedbackSection" class="title_links">Feedback</a></div>
+        <nav class="links" id="linksId">
+            <a href="#" class="title_links">Home</a>
+            <a href="#pizzaSection" class="title_links">Pizza</a>
+            <a href="#saladSection" class="title_links">Salad</a>
+            <a href="#softDrinkSection" class="title_links">Soft Drinks</a>
+            <a href="#feedbackSection" class="title_links">Feedback</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
         </nav>
     </header>
 
@@ -214,12 +219,10 @@
 
     <section id="feedbackSection">
         <h1>Tell us what you think</h1>
-        <div class="feedback">
-            <form>
-                <table>
+                <table class="feedback">
                     <tr>
                         <td class="description">How do you like our Pizza?</td>
-                        <td>
+                        <td class="feedbackSelections">
                             <input value="awesome" type="radio" name="pizzaRating"> Awesome
                             <input value="good" type="radio" name="pizzaRating"> Good
                             <input value="okay" type="radio" name="pizzaRating"> Okay
@@ -228,7 +231,7 @@
                     </tr>
                     <tr>
                         <td class="description">What do you think about our prices?</td>
-                        <td>
+                        <td class="feedbackSelections">
                             <input value="fair" type="radio" name="pizzaPrice"> Fair
                             <input value="okay" type="radio" name="pizzaPrice"> Okay
                             <input value="expensive" type="radio" name="pizzaPrice"> Expensive
@@ -248,12 +251,10 @@
                     </tr>
                     <tr>
                         <td class="description"></td>
-                        <td id="submitButton"><input type="submit"></td>
+                        <td id="submitButtontd"><input id="submitButton" type="submit"></td>
                     </tr>
                 </table>
 
-            </form>
-        </div>
     </section>
 
     <footer>
@@ -286,5 +287,17 @@
             Chicago, IL 60614, USA
         </address>
     </footer>
+
+<script>
+    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+    function myFunction() {
+        var x = document.getElementById("linksId");
+        if (x.className === "links") {
+            x.className += " responsive";
+        } else {
+            x.className = "links";
+        }
+    }
+</script>
 </body>
 </html>
