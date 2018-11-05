@@ -80,18 +80,9 @@ section img {
     margin-right: auto;
 }
 
-th.hours_title {
-    text-align: left;
-    font-weight: bold;
-}
-
 .feedback {
     display: flex;
     justify-content: center;
-}
-
-td {
-    padding: 2%;
 }
 
 .description {
@@ -107,10 +98,6 @@ td {
 
 .longText {
     height: 10em;
-}
-
-#submitButtontd {
-    text-align: right;
 }
 
 .grid {
@@ -147,6 +134,9 @@ figcaption {
 
 #submitButton {
     font-size: 1.1em;
+    text-align: center;
+    height: min-content;
+    width: min-content;
 }
 
 blockquote {
@@ -169,6 +159,41 @@ footer {
 .feedbackSelections {
     display: grid;
     grid-template-columns: repeat(2,4fr);
+}
+
+.feedbackGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.feedbackColumn{
+    display: grid;
+    grid-template-rows: repeat(4,1fr) 200px 1fr;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.feedbackText {
+    text-align: right;
+    margin: 2%;
+}
+
+.feedbackInput{
+    margin: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text {
+    height: min-content;
+}
+
+#feedbackField {
+    vertical-align: top;
+    height: auto;
 }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
@@ -197,6 +222,15 @@ footer {
     .grid {
         grid-template-columns: repeat(1,4fr);
         grid-gap: 1em;
+    }
+
+    .feedbackGrid {
+        margin: 0;
+    }
+
+    .feedbackInput {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
     blockquote {

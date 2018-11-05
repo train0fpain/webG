@@ -219,44 +219,39 @@
 
     <section id="feedbackSection">
         <h1>Tell us what you think</h1>
-        <form onsubmit="return checkFormFilledOut()">
-                <table class="feedback">
-                    <tr>
-                        <td class="description">How do you like our Pizza?</td>
-                        <td class="feedbackSelections">
-                            <input value="awesome" type="radio" name="pizzaRating" checked> Awesome
-                            <input value="good" type="radio" name="pizzaRating"> Good
-                            <input value="okay" type="radio" name="pizzaRating"> Okay
-                            <input value="bad" type="radio" name="pizzaRating"> Bad
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="description">What do you think about our prices?</td>
-                        <td class="feedbackSelections">
-                            <input value="fair" type="radio" name="pizzaPrice" checked> Fair
-                            <input value="okay" type="radio" name="pizzaPrice"> Okay
-                            <input value="expensive" type="radio" name="pizzaPrice"> Expensive
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="description">Your name?</td>
-                        <td><input type="text" class="text" required></td>
-                    </tr>
-                    <tr>
-                        <td class="description">Your e-mail address?</td>
-                        <td><input type="text" class="text" id="email" required>
-                            <span class="errorMsg" id="emailError"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="description">What can we do better?</td>
-                        <td class="longText"><input type="text" class="text" id="feedbackField" required></td>
-                    </tr>
-                    <tr>
-                        <td class="description"></td>
-                        <td id="submitButtontd"><input id="submitButton" type="submit"></td>
-                    </tr>
-                </table>
+        <form class="feedbackGrid" >
+            <div class="feedbackColumn">
+                <div class="feedbackText">How do you like our Pizza?</div>
+                <div class="feedbackText">What do you think about our prices?</div>
+                <div class="feedbackText">Your name?</div>
+                <div class="feedbackText">Your e-mail address?</div>
+                <div class="feedbackText">What can we do better?</div>
+            </div>
+            <div class="feedbackColumn">
+                <div class="feedbackInput">
+                    <div><input value="awesome" type="radio" name="pizzaRating" checked> Awesome</div>
+                    <div><input value="good" type="radio" name="pizzaRating"> Good</div>
+                    <div><input value="okay" type="radio" name="pizzaRating"> Okay</div>
+                    <div><input value="bad" type="radio" name="pizzaRating"> Bad</div>
+                </div>
+                <div class="feedbackInput">
+                    <div><input value="fair" type="radio" name="pizzaPrice" checked> Fair</div>
+                    <div><input value="okay" type="radio" name="pizzaPrice"> Okay</div>
+                    <div><input value="expensive" type="radio" name="pizzaPrice"> Expensive</div>
+                </div>
+                <div class="feedbackInput">
+                    <input type="text" class="text" required>
+                </div>
+                <div class="feedbackInput">
+                    <input type="email" class="text" id="email" required>
+                </div>
+                <div class="feedbackInput">
+                    <textarea class="text" id="feedbackField" minlength="50" required></textarea>
+                </div>
+                <div class="feedbackInput">
+                    <input id="submitButton" type="submit">
+                </div>
+            </div>
         </form>
     </section>
 
@@ -291,7 +286,6 @@
         </address>
     </footer>
 
-    <script src="scripts/feedbackValidation.js"></script>
     <script>
         /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
         function myFunction() {
