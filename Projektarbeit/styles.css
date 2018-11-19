@@ -65,13 +65,17 @@ section {
 .imgLinks_index {
     display: inline-grid;
     grid-template-columns: repeat(3, 1fr);
-    margin-left: 10%;
+    margin-left: 0%;
     margin-top: 5%;
+}
+
+.imgLinks_index a{
+    text-align: center;
 }
 
 section img {
     width: 45%;
-    height: auto;
+    height: 45%;
 }
 
 .factoryImg {
@@ -128,6 +132,7 @@ figcaption {
 }
 
 .productDescription {
+    display: block;
     font-size: 0.8em;
     font-style: italic;
 }
@@ -249,6 +254,7 @@ footer {
         flex-direction: column;
         align-content: center;
     }
+
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
@@ -264,4 +270,14 @@ footer {
         display: block;
         text-align: left;
     }
+
+    .title.responsive {
+        display: none;
+    }
+
+    .links.responsive {
+        width: 100%;
+        margin-right: 0;
+    }
+
 }

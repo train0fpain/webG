@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <b class="title">Tony's Pizza Factory</b>
+        <b class="title" id="title">Tony's Pizza Factory</b>
 
         <nav class="links" id="linksId">
             <a href="#" class="title_links">Home</a>
@@ -29,191 +29,27 @@
             <img class="factoryImg" src="img/pizza.jpg" height="200" width="200" alt="pizza image">
 
         <div class="imgLinks_index">
-            <a href="pizza.html"><img src="img/pizza.jpg" height="75" width="75" alt="pizza image">Pizza</a>
-            <a href="salad.html"><img src="img/pizza.jpg" height="75" width="75" alt="pizza image">Salad</a>
-            <a href="soft_drinks.html"><img src="img/pizza.jpg" height="75" width="75" alt="pizza image">Soft Drinks</a>
+            <a href="#pizzaSection"><img src="img/pizza.jpg" height="75" width="75" alt="pizza image"></a>
+            <a href="#saladSection"><img src="img/salad.jpg" height="75" width="75" alt="pizza image"></a>
+            <a href="#softDrinkSection"><img src="img/softDrinks.jpg" height="75" width="75" alt="pizza image"></a>
         </div>
     </section>
 
     <section id="pizzaSection">
         <h1>Pizza</h1>
-        <div class="grid">
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Pizza xy
-                        <div class="price">15$ <button>Buy</button></div><br>
-                        <div class="productDescription">description</div>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Pizza xy
-                        <div class="price">15$ <button>Buy</button></div><br>
-                        <div class="productDescription">description</div>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Pizza xy
-                        <div class="price">15$ <button>Buy</button></div><br>
-                        <div class="productDescription">description</div>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Pizza xy
-                        <div class="price">15$ <button>Buy</button></div><br>
-                        <div class="productDescription">description</div>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Pizza xy
-                        <div class="price">15$ <button>Buy</button></div><br>
-                        <div class="productDescription">description</div>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Pizza xy
-                        <div class="price">15$ <button>Buy</button></div><br>
-                        <div class="productDescription">description</div>
-                    </figcaption>
-                </figure>
-            </div>
+        <div class="grid" id="pizzaGrid">
         </div>
     </section>
 
     <section id="saladSection">
         <h1>Salad</h1>
-        <div class="grid">
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Salad blabla<br>
-                        <div class="productDescription">description</div>
-                        <select class="dressing">
-                            <option value="1">italian dressing</option>
-                            <option value="2">french dressing</option>
-                        </select> <div class="price"> 5$ <button>Buy</button></div>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Salad blabla<br>
-                        <div class="productDescription">description</div>
-                        <select class="dressing">
-                            <option value="1">italian dressing</option>
-                            <option value="2">french dressing</option>
-                        </select> <div class="price"> 5$ <button>Buy</button></div>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Salad blabla<br>
-                        <div class="productDescription">description</div>
-                        <select class="dressing">
-                            <option value="1">italian dressing</option>
-                            <option value="2">french dressing</option>
-                        </select> <div class="price"> 5$ <button>Buy</button></div>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Salad blabla<br>
-                        <div class="productDescription">description</div>
-                        <select class="dressing">
-                            <option value="1">italian dressing</option>
-                            <option value="2">french dressing</option>
-                        </select> <div class="price"> 5$ <button>Buy</button></div>
-                    </figcaption>
-                </figure>
-            </div>
+        <div class="grid" id="saladGrid">
         </div>
     </section>
 
     <section id="softDrinkSection">
         <h1>Soft Drinks</h1>
-        <div class="grid">
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Beverage<br>
-                        <select class="drink">
-                            <option value="1">50cl</option>
-                            <option value="2">30cl</option>
-                        </select>
-                        <div class="price">2$ <button>Buy</button></div><br>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Beverage<br>
-                        <select class="drink">
-                            <option value="1">50cl</option>
-                            <option value="2">30cl</option>
-                        </select>
-                        <div class="price">2$ <button>Buy</button></div><br>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Beverage<br>
-                        <select class="drink">
-                            <option value="1">50cl</option>
-                            <option value="2">30cl</option>
-                        </select>
-                        <div class="price">2$ <button>Buy</button></div><br>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="gridElem">
-                <figure>
-                    <img src="img/pizza.jpg" height="150" width="150">
-                    <figcaption>
-                        Beverage<br>
-                        <select class="drink">
-                            <option value="1">50cl</option>
-                            <option value="2">30cl</option>
-                        </select>
-                        <div class="price">2$ <button>Buy</button></div><br>
-                    </figcaption>
-                </figure>
-            </div>
+        <div class="grid", id="drinkGrid">
         </div>
     </section>
 
@@ -286,6 +122,9 @@
         </address>
     </footer>
 
+
+    <script src="scripts/restScript.js"></script>
+
     <script>
         /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
         function myFunction() {
@@ -294,6 +133,13 @@
                 x.className += " responsive";
             } else {
                 x.className = "links";
+            }
+
+            let title = document.getElementById("title");
+            if (title.className === "title"){
+                title.className += " responsive";
+            } else {
+                title.className = "title";
             }
         }
     </script>
