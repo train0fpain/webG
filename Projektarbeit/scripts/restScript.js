@@ -4,12 +4,9 @@ let pizzaGrid = document.getElementById("pizzaGrid");
 let saladGrid = document.getElementById("saladGrid");
 let drinkGrid = document.getElementById("drinkGrid");
 let productJson;
-let selectClass;
-let selectOptions;
-let hasDescription;
 placeProducts();
 
-function sendGetRequest(url, grid, func) {
+function sendGetRequest(url, grid, func, switchVal) {
     let req = new XMLHttpRequest();
     req.open("GET", url, true);
     req.onreadystatechange= function() {
@@ -17,9 +14,25 @@ function sendGetRequest(url, grid, func) {
             var json = JSON.parse(req.responseText);
             console.log(json);
             productJson = json;
-            json.forEach(function (elem) {
-                grid.appendChild(func(elem));
-            })
+            switch (switchVal) {
+                case 0:
+                    json.forEach(function (elem) {
+                        grid.appendChild(addPizzaElem(elem));
+                    })
+                    break;
+                case 1:
+                    json.forEach(function (elem) {
+                        grid.appendChild(addSaladOrBeverageElem(elem, "dressing", ["Italian dressing", "French dressing"], true));
+                    })
+                    break;
+                case 2:
+                    json.forEach(function (elem) {
+                        grid.appendChild(addSaladOrBeverageElem(elem, "drink", ["50cl", "30cl"], false));
+                    })
+                    break;
+
+            }
+
         }else if(req.readyState === XMLHttpRequest.DONE && req.status === 400){
             console.log("display internal server error");
         }
@@ -29,99 +42,74 @@ function sendGetRequest(url, grid, func) {
 }
 
 function placeProducts() {
-    sendGetRequest("https://tonyspizzafactory.herokuapp.com/api/pizzas", pizzaGrid, addPizzaElem);
+    sendGetRequest("https://tonyspizzafactory.herokuapp.com/api/pizzas", pizzaGrid, addPizzaElem, 0);
 
-    selectClass = "dressing";
-    selectOptions = ["Italian dressing", "French dressing"];
-    hasDescription = true;
-    sendGetRequest("https://tonyspizzafactory.herokuapp.com/api/salads", saladGrid, addSaladOrBeverageElem);
+    sendGetRequest("https://tonyspizzafactory.herokuapp.com/api/salads", saladGrid, addSaladOrBeverageElem, 1);
 
-    selectClass = "drink";
-    selectOptions = ["50cl", "30cl"];
-    hasDescription = false;
-    sendGetRequest("https://tonyspizzafactory.herokuapp.com/api/softdrinks", drinkGrid, addSaladOrBeverageElem);
+    sendGetRequest("https://tonyspizzafactory.herokuapp.com/api/softdrinks", drinkGrid, addSaladOrBeverageElem, 2);
 }
 
 function addPizzaElem(json) {
-    let div = document.createElement("div");
-    div.className = "gridElem";
     let figure = document.createElement("figure");
+    figure.className = "gridElem";
     let img = document.createElement("img");
     img.src = json["imageUrl"];
 
-
     let figcap = document.createElement("figcaption");
-    let price = document.createElement("div");
-    price.className = "price";
 
     let descr = document.createElement("div");
     descr.className = "productDescription";
 
-    let priceNode = document.createTextNode(" "+json["prize"]+" ");
-    price.appendChild(priceNode);
-
     let ingredientsNode = document.createTextNode(json["ingredients"].join(', '));
     descr.appendChild(ingredientsNode);
 
-    let button = document.createElement("button");
-    button.appendChild(document.createTextNode("Buy"));
+    let priceBox = document.createElement("div");
+    createPriceField(priceBox, json);
 
     let nameNode = document.createTextNode(json["name"]);
     figcap.appendChild(nameNode);
-    figcap.appendChild(price);
-    figcap.appendChild(button);
     figcap.appendChild(document.createElement("br"));
     figcap.appendChild(descr);
+    figcap.appendChild(priceBox);
 
     figure.appendChild(img);
     figure.appendChild(figcap);
 
-    div.appendChild(figure);
-
-    return div;
+    return figure;
 }
 
-function addSaladOrBeverageElem(json) {
-    let div = document.createElement("div");
-    div.className = "gridElem";
+function addSaladOrBeverageElem(json, selectClass, selectOptions, hasDescription) {
     let figure = document.createElement("figure");
+    figure.className = "gridElem";
     let img = document.createElement("img");
     img.src = json["imageUrl"];
 
     let figcap = document.createElement("figcaption");
     let price = document.createElement("div");
-    price.className = "price";
-
-    let priceNode = document.createTextNode(" "+json["prize"]+" ");
-    price.appendChild(priceNode);
-
-    let button = document.createElement("button");
-    button.appendChild(document.createTextNode("Buy"));
+    price.appendChild(createSelect(selectClass, selectOptions));
+    createPriceField(price, json);
 
     let nameNode = document.createTextNode(json["name"]);
     figcap.appendChild(nameNode);
-    figcap.appendChild(document.createElement("br"));
-
     if (hasDescription) {
+        figcap.appendChild(document.createElement("br"));
         let descr = document.createElement("div");
         descr.className = "productDescription";
         let ingredientsNode = document.createTextNode(json["ingredients"].join(', '));
+        console.log(json["ingredients"].join(', '));
         descr.appendChild(ingredientsNode);
         figcap.appendChild(descr);
     }
 
     figure.appendChild(img);
     figure.appendChild(figcap);
-    figure.appendChild(createSelect());
     figure.appendChild(price);
-    figure.appendChild(button);
 
-    div.appendChild(figure);
-    pizzaGrid.appendChild(div);
-    return div;
+    pizzaGrid.appendChild(figure);
+    return figure;
 }
 
-function createSelect() {
+function createSelect(selectClass, selectOptions) {
     let select = document.createElement("select");
     select.className = selectClass;
     selectOptions.forEach(function (string) {
@@ -130,6 +118,26 @@ function createSelect() {
         select.add(option);
     })
     return select;
+}
+
+function createPriceField(priceBox, json) {
+    priceBox.className = "priceBox";
+
+    let price = document.createElement("div");
+    price.className = "price";
+    let priceNode = document.createTextNode(" "+json["prize"]+" ");
+    price.appendChild(priceNode);
+    let buttonImg = document.createElement("img");
+    buttonImg.src = "img/buy.png";
+    buttonImg.className = "buyImg";
+    let button = document.createElement("button");
+    button.className = "buyButton";
+    button.appendChild(buttonImg);
+
+    priceBox.appendChild(price);
+    priceBox.appendChild(button);
+
+    return priceBox;
 }
 
 
