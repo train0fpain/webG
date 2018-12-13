@@ -13,6 +13,7 @@ header {
     justify-content: space-between;
     background-color: #475469;
     color: #ffffff;
+    z-index: 10000;
 }
 
 body {
@@ -233,6 +234,10 @@ footer {
 .ratingElem {
     display: flex;
     justify-content: space-between;
+}
+
+.chartContainer {
+    margin-bottom: 5em;
 }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
