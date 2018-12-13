@@ -49,13 +49,13 @@
 
     <section id="softDrinkSection">
         <h1>Soft Drinks</h1>
-        <div class="grid" id="drinkGrid">
+        <div class="grid" id="softdrinkGrid">
         </div>
     </section>
 
     <section id="feedbackSection">
         <h1>Tell us what you think</h1>
-        <form class="feedbackGrid" >
+        <form id="submitForm" class="feedbackGrid" onsubmit="return sendFeedback(this)">
             <div class="feedbackColumn">
                 <div class="feedbackText">How do you like our Pizza?</div>
                 <div class="feedbackText">What do you think about our prices?</div>
@@ -68,7 +68,7 @@
                     <div><input value="awesome" type="radio" name="pizzaRating" checked> Awesome</div>
                     <div><input value="good" type="radio" name="pizzaRating"> Good</div>
                     <div><input value="okay" type="radio" name="pizzaRating"> Okay</div>
-                    <div><input value="bad" type="radio" name="pizzaRating"> Bad</div>
+                    <div><input value="poor" type="radio" name="pizzaRating"> Bad</div>
                 </div>
                 <div class="feedbackInput">
                     <div><input value="fair" type="radio" name="pizzaPrice" checked> Fair</div>
