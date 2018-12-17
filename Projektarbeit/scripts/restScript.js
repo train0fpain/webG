@@ -1,9 +1,9 @@
 const TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.MQ.bYceSpllpyYQixgNzDt7dpCkEojdv3NKD-85XLXfdI4";
 const SERVER = "https://tonyspizzafactory.herokuapp.com/api/";
-const pizzaGrid = document.getElementById("pizzaGrid");
-const saladGrid = document.getElementById("saladGrid");
-const drinkGrid = document.getElementById("softdrinkGrid");
-const submitElems = document.getElementById("submitForm").children[1].children;
+const PIZZA_GRID = document.getElementById("pizzaGrid");
+const SALAD_GRID = document.getElementById("saladGrid");
+const DRINK_GRID = document.getElementById("softdrinkGrid");
+const SUBMIT_ELEMS = document.getElementById("submitForm").children[1].children;
 
 placeProducts();
 
@@ -35,6 +35,7 @@ function sendGetRequest(url, grid, func, switchVal) {
 
         }else if(req.readyState === XMLHttpRequest.DONE && req.status === 400){
             console.log("display internal server error");
+            alert("error getting data");
         }
     };
     req.setRequestHeader("Authorization", TOKEN);
@@ -52,7 +53,8 @@ function sendPostRequest(url, jsonObj, redirect) {
                 window.location.replace("./feedback.html");
             }
         }else if(req.readyState === XMLHttpRequest.DONE && req.status === 400){
-            console.log("display internal server error");
+            console.log("internal server error");
+            alert("error while processing data");
         }
     };
     console.log(jsonObj);
@@ -61,11 +63,11 @@ function sendPostRequest(url, jsonObj, redirect) {
 }
 
 function placeProducts() {
-    sendGetRequest(SERVER + "pizzas", pizzaGrid, addPizzaElem, 0);
+    sendGetRequest(SERVER + "pizzas", PIZZA_GRID, addPizzaElem, 0);
 
-    sendGetRequest(SERVER + "salads", saladGrid, addSaladOrBeverageElem, 1);
+    sendGetRequest(SERVER + "salads", SALAD_GRID, addSaladOrBeverageElem, 1);
 
-    sendGetRequest(SERVER + "softdrinks", drinkGrid, addSaladOrBeverageElem, 2);
+    sendGetRequest(SERVER + "softdrinks", DRINK_GRID, addSaladOrBeverageElem, 2);
 }
 
 function addPizzaElem(json) {
@@ -124,7 +126,7 @@ function addSaladOrBeverageElem(json, selectClass, selectOptions, hasDescription
     figure.appendChild(figcap);
     figure.appendChild(price);
 
-    pizzaGrid.appendChild(figure);
+    PIZZA_GRID.appendChild(figure);
     return figure;
 }
 
@@ -179,7 +181,7 @@ function sendFeedback() {
     let localElems;
 
     let likeVal;
-    localElems = submitElems[0].children;
+    localElems = SUBMIT_ELEMS[0].children;
     for (let i = 0; i < localElems.length; i++) {
         let outerDiv = localElems[i];
         if (outerDiv.firstChild.checked){
@@ -189,7 +191,7 @@ function sendFeedback() {
     }
 
     let priceVal;
-    localElems = submitElems[1].children;
+    localElems = SUBMIT_ELEMS[1].children;
     for (let i = 0; i < localElems.length; i++) {
         let outerDiv = localElems[i];
         if (outerDiv.firstChild.checked){
@@ -197,9 +199,9 @@ function sendFeedback() {
         }
     }
 
-    let name = submitElems[2].children[0].value;
-    let email = submitElems[3].children[0].value;
-    let text = submitElems[4].children[0].value;
+    let name = SUBMIT_ELEMS[2].children[0].value;
+    let email = SUBMIT_ELEMS[3].children[0].value;
+    let text = SUBMIT_ELEMS[4].children[0].value;
 
     let jsonString = '{\n' +
         '  "id": '+0+',\n' +
