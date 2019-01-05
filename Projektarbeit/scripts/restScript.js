@@ -12,21 +12,31 @@ function sendGetRequest(url, grid, func, switchVal) {
     req.open("GET", url, true);
     req.onreadystatechange= function() {
         if(req.readyState === XMLHttpRequest.DONE && req.status === 200) {
-            var json = JSON.parse(req.responseText);
-            console.log(json);
+
+            let xmlDoc;
+            if (window.DOMParser){
+                let parser = new DOMParser();
+                xmlDoc = parser.parseFromString(req.responseText, "text/xml")
+            } else {    // internet explorer
+                xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+                xmlDoc.async = false;
+                xmlDoc.loadXML(req.responseText);
+            }
+
+            console.log(xmlDoc);
             switch (switchVal) {
                 case 0:
-                    json.forEach(function (elem) {
+                    xmlDoc.forEach(function (elem) {
                         grid.appendChild(addPizzaElem(elem));
                     })
                     break;
                 case 1:
-                    json.forEach(function (elem) {
+                    xmlDoc.forEach(function (elem) {
                         grid.appendChild(addSaladOrBeverageElem(elem, "dressing", ["Italian dressing", "French dressing"], true));
                     })
                     break;
                 case 2:
-                    json.forEach(function (elem) {
+                    xmlDoc.forEach(function (elem) {
                         grid.appendChild(addSaladOrBeverageElem(elem, "drink", ["50cl", "30cl"], false));
                     })
                     break;
@@ -74,20 +84,20 @@ function addPizzaElem(json) {
     let figure = document.createElement("figure");
     figure.className = "gridElem";
     let img = document.createElement("img");
-    img.src = json["imageUrl"];
+    img.src = json.getElementsByTagName("imageUrl")[0];
 
     let figcap = document.createElement("figcaption");
 
     let descr = document.createElement("div");
     descr.className = "productDescription";
 
-    let ingredientsNode = document.createTextNode(json["ingredients"].join(', '));
+    let ingredientsNode = document.createTextNode(json.getElementsByTagName("ingredients").join(', '));
     descr.appendChild(ingredientsNode);
 
     let priceBox = document.createElement("div");
     createPriceField(priceBox, json);
 
-    let nameNode = document.createTextNode(json["name"]);
+    let nameNode = document.createTextNode(json.getElementsByTagName("name")[0]);
     figcap.appendChild(nameNode);
     figcap.appendChild(document.createElement("br"));
     figcap.appendChild(descr);
@@ -103,21 +113,21 @@ function addSaladOrBeverageElem(json, selectClass, selectOptions, hasDescription
     let figure = document.createElement("figure");
     figure.className = "gridElem";
     let img = document.createElement("img");
-    img.src = json["imageUrl"];
+    img.src = json.getElementsByTagName("imageUrl")[0];
 
     let figcap = document.createElement("figcaption");
     let price = document.createElement("div");
     price.appendChild(createSelect(selectClass, selectOptions));
     createPriceField(price, json);
 
-    let nameNode = document.createTextNode(json["name"]);
+    let nameNode = document.createTextNode(json.getElementsByTagName("name")[0]);
     figcap.appendChild(nameNode);
     if (hasDescription) {
         figcap.appendChild(document.createElement("br"));
         let descr = document.createElement("div");
         descr.className = "productDescription";
-        let ingredientsNode = document.createTextNode(json["ingredients"].join(', '));
-        console.log(json["ingredients"].join(', '));
+        let ingredientsNode = document.createTextNode(json.getElementsByTagName("ingredients").join(', '));
+        console.log(json.getElementsByTagName("ingredients").join(', '));
         descr.appendChild(ingredientsNode);
         figcap.appendChild(descr);
     }
@@ -146,7 +156,7 @@ function createPriceField(priceBox, json) {
 
     let price = document.createElement("div");
     price.className = "price";
-    let priceNode = document.createTextNode(" "+json["prize"]+" ");
+    let priceNode = document.createTextNode(" "+json.getElementsByTagName("prize")[0]+" ");
     price.appendChild(priceNode);
     let buttonImg = document.createElement("img");
     buttonImg.src = "img/buy.png";
@@ -164,9 +174,9 @@ function createPriceField(priceBox, json) {
         console.log(figcaption.parentElement.parentElement.id);
         let type = gridId.slice(0, gridId.length-4);
         let jsonObject = '{\n' +
-                '"id":'+0+', \n' +
-                '"type":"'+type+'", \n' +
-                '"name":"'+name+'"\n' +
+            '"id":'+0+', \n' +
+            '"type":"'+type+'", \n' +
+            '"name":"'+name+'"\n' +
             '}';
         sendPostRequest(SERVER + "orders", jsonObject, false);
     };
